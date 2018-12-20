@@ -5,15 +5,15 @@
     </head>
     <body>
         <script>
-            console.log('=== WELCOME TO ROCK, PAPER, SCISSORS ===')
+            console.log('=== WELCOME TO ROCK, PAPER, SCISSORS. BEST OF FIVE ROUNDS WINS ===');
             let playerScore = 0;
             let computerScore = 0;
             let resultMsg = '';
+            let round = 1;
 
             function game() {
                 // Collection of playerInput and computerInput
                 function computerPlay() {
-                    // Function that randomly chooses between rock, paper, or scissors for computerInput
                     let inputValue = Math.random();
 
                     if (inputValue < (1/3)) {
@@ -25,58 +25,73 @@
                     }
                 }
                 let computerInput = computerPlay();
-                let playerInput = prompt('Rock, paper, or scissors? (Five rounds)', '').toLowerCase();
+                let playerInput = prompt('Rock, paper, or scissors? (Round ' + round + ')', '').toLowerCase();
 
                 // Execution of round based on playerInput and computerInput
-
                 function playRound(playerSelection, computerSelection) {
-                    // Function that decides the winner of the round based on computerSelection and playerSelection
                     // In case of tie.
                     if (playerSelection === computerSelection) {
                         resultMsg = 'Tie!';
+                        return 'tie';
                     }
-
                     // If player chooses rock
                     else if (playerSelection === 'rock' && computerSelection === 'scissors') {
                         resultMsg = 'Win! Rock beats scissors.';
+                        return 'win';
                     } else if (playerSelection === 'rock' && computerSelection === 'paper') {
                         resultMsg = 'Loss! Rock loses to paper.';
+                        return 'loss';
                     }
-
                     // If player chooses paper
                     else if (playerSelection === 'paper' && computerSelection === 'rock') {
                         resultMsg = 'Win! Paper beats rock.';
+                        return 'win';
                     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
                         resultMsg = 'Loss! Paper loses to scissors.';
+                        return 'loss';
                     }
-
                     // If player chooses scissors
                     else if (playerSelection === 'scissors' && computerSelection === 'paper') {
                         resultMsg = 'Win! Scissors beat paper.';
+                        return 'win';
                     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
                         resultMsg = 'Loss! Scissors loses to rock.';
+                        return 'loss';
                     } else {
                         alert('Invalid input.');
-                        resultMsg = 'Invalid Input';
+                        resultMsg = 'Invalid input';
+                        return 'invalid';
                     }
                 }
-                playRound(playerInput, computerInput);
-                console.log(resultMsg);
+                let playRoundResult = playRound(playerInput, computerInput);
+
+                // For invalid inputs
+                if (playRoundResult === 'invalid') {
+                    console.log(resultMsg);
+                    game();
+                } else {
+                    playRound(playerInput, computerInput);
+                    console.log(resultMsg);
+                    round++;
+                }
+                // Adding and displaying game score
+                function gameScore() {
+                    if (playRoundResult === 'win') {
+                        playerScore++;
+                        console.log('Score: ' + playerScore + ' — ' + computerScore);       
+                    } else if (playRoundResult === 'loss') {
+                        computerScore++;
+                        console.log('Score: ' + playerScore + ' — ' + computerScore);
+                    } else if (playRoundResult === 'tie') {
+                        console.log('Score: ' + playerScore + ' — ' + computerScore);
+                    } else {}
+                }
+                gameScore();
             }
-            // Function that computes and displays score of the game
-            function gameScore() {
-                if (resultMsg.charAt(0) === 'W') {
-                    playerScore++;       
-                } else if (resultMsg.charAt(0) === 'L') {
-                    computerScore++;
-                } else {}
-                console.log('Score: ' + playerScore + ' — ' + computerScore);
-            }
-            // Looping game and gameScore functions for five rounds
+            // Looping game() function for five rounds
             function fiveRounds() {
                 for (i = 0; i < 5; i++) {
                     game();
-                    gameScore();
                 }
             }
             // End result messages
@@ -89,10 +104,8 @@
                     console.log('=== THIS GAME ENDS IN A TIE WITH A FINAL SCORE OF ' + playerScore + ' — ' + computerScore + ' ===');
                 }
             }
-
             fiveRounds();
             endResult();
-
         </script>
     </body>
 </html>
