@@ -4,108 +4,17 @@
         <title>A Game of Rock, Paper, Scissors.</title>
     </head>
     <body>
-        <script>
-            console.log('=== WELCOME TO ROCK, PAPER, SCISSORS. BEST OF FIVE ROUNDS WINS ===');
-            let playerScore = 0;
-            let computerScore = 0;
-            let resultMsg = '';
-            let round = 1;
-
-            function game() {
-                // Collection of playerInput and computerInput
-                function computerPlay() {
-                    let inputValue = Math.random();
-
-                    if (inputValue < (1/3)) {
-                        return 'rock';
-                    } else if (inputValue > (2/3)) {
-                        return 'paper';
-                    } else { 
-                        return 'scissors';
-                    }
-                }
-                let computerInput = computerPlay();
-                let playerInput = prompt('Rock, paper, or scissors? (Round ' + round + ')', '').toLowerCase();
-
-                // Execution of round based on playerInput and computerInput
-                function playRound(playerSelection, computerSelection) {
-                    // In case of tie.
-                    if (playerSelection === computerSelection) {
-                        resultMsg = 'Tie!';
-                        return 'tie';
-                    }
-                    // If player chooses rock
-                    else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-                        resultMsg = 'Win! Rock beats scissors.';
-                        return 'win';
-                    } else if (playerSelection === 'rock' && computerSelection === 'paper') {
-                        resultMsg = 'Loss! Rock loses to paper.';
-                        return 'loss';
-                    }
-                    // If player chooses paper
-                    else if (playerSelection === 'paper' && computerSelection === 'rock') {
-                        resultMsg = 'Win! Paper beats rock.';
-                        return 'win';
-                    } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-                        resultMsg = 'Loss! Paper loses to scissors.';
-                        return 'loss';
-                    }
-                    // If player chooses scissors
-                    else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-                        resultMsg = 'Win! Scissors beat paper.';
-                        return 'win';
-                    } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-                        resultMsg = 'Loss! Scissors loses to rock.';
-                        return 'loss';
-                    } else {
-                        alert('Invalid input.');
-                        resultMsg = 'Invalid input';
-                        return 'invalid';
-                    }
-                }
-                let playRoundResult = playRound(playerInput, computerInput);
-
-                // For invalid inputs
-                if (playRoundResult === 'invalid') {
-                    console.log(resultMsg);
-                    game();
-                } else {
-                    playRound(playerInput, computerInput);
-                    console.log(resultMsg);
-                    round++;
-                }
-                // Adding and displaying game score
-                function gameScore() {
-                    if (playRoundResult === 'win') {
-                        playerScore++;
-                        console.log('Score: ' + playerScore + ' — ' + computerScore);       
-                    } else if (playRoundResult === 'loss') {
-                        computerScore++;
-                        console.log('Score: ' + playerScore + ' — ' + computerScore);
-                    } else if (playRoundResult === 'tie') {
-                        console.log('Score: ' + playerScore + ' — ' + computerScore);
-                    } else {}
-                }
-                gameScore();
-            }
-            // Looping game() function for five rounds
-            function fiveRounds() {
-                for (i = 0; i < 5; i++) {
-                    game();
-                }
-            }
-            // End result messages
-            function endResult() {
-                if (playerScore > computerScore) {
-                    console.log('=== PLAYER WINS WITH A FINAL SCORE OF ' + playerScore + ' — ' + computerScore + ' ===');
-                } else if (computerScore > playerScore) {
-                    console.log('=== OPPONENT WINS WITH A FINAL SCORE OF ' + playerScore + ' — ' + computerScore + ' ===');
-                } else {
-                    console.log('=== THIS GAME ENDS IN A TIE WITH A FINAL SCORE OF ' + playerScore + ' — ' + computerScore + ' ===');
-                }
-            }
-            fiveRounds();
-            endResult();
-        </script>
+        <div id='container'>
+        <h1>WELCOME TO ROCK, PAPER, SCISSORS<br><br>
+            FIRST TO FIVE WINS</h1>
+            <div class='play'>
+                <button id='rock'>Rock</button>
+                <button id='paper'>Paper</button>
+                <button id='scissors'>Scissors</button>
+            </div>
+            <div class='end-results'>
+            </div>
+        </div>
+        <script type='text/javascript' src='rock-paper-scissors.js'></script>
     </body>
 </html>
