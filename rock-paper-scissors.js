@@ -58,24 +58,33 @@ function playRound(playerSelection, computerSelection) {
 let playRoundResult;
 let rockBtn = document.querySelector('#rock');
 rockBtn.addEventListener('click', () => {
-    playRoundResult = playRound('rock', computerPlay());
-    displayRound();
-    gameScore();
-    displayResult();
+    if (playerScore > 4 || computerScore > 4) {    
+    } else {
+        playRoundResult = playRound('rock', computerPlay());
+        displayRound();
+        gameScore();
+        displayResult();
+    }
 });
 let paperBtn = document.querySelector('#paper');
 paperBtn.addEventListener('click', () => {
-    playRoundResult = playRound('paper', computerPlay());
-    displayRound();
-    gameScore();
-    displayResult();
+    if (playerScore > 4 || computerScore > 4) {
+    } else {   
+        playRoundResult = playRound('paper', computerPlay());
+        displayRound();
+        gameScore();
+        displayResult();
+    }
 });
 let scissorsBtn = document.querySelector('#scissors');
 scissorsBtn.addEventListener('click', () => {
-    playRoundResult = playRound('scissors', computerPlay());
-    displayRound();
-    gameScore();
-    displayResult();
+    if (playerScore > 4 || computerScore > 4) {
+    } else {
+        playRoundResult = playRound('scissors', computerPlay());
+        displayRound();
+        gameScore();
+        displayResult();
+    }
 });
 
 // Display of round result
