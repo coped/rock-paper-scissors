@@ -1,5 +1,5 @@
 # README
-This is a small JavaScript based game of rock, paper, scissors. To play, open the .html file in an internet browser.
+This is a small JavaScript based game of rock, paper, scissors. To play, visit https://coped.github.io/rock-paper-scissors/, or download files and open the .html file in an internet browser.
 
 The rules: Rock beats scissors, scissors beats paper, and paper beats rock.
 
