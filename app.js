@@ -1,6 +1,3 @@
-let container = document.querySelector('#container');
-container.setAttribute('style', 'text-align: center');
-
 let playerScore = 0;
 let computerScore = 0;
 let resultMsg = '';
