@@ -99,12 +99,12 @@ playDiv.appendChild(score);
 function gameScore() {
     if (playRoundResult === 'win') {
         playerScore++;
-        score.textContent = 'Score: ' + playerScore + ' - ' + computerScore;       
+        score.textContent = `Score: ${playerScore} - ${computerScore}`;       
     } else if (playRoundResult === 'loss') {
         computerScore++;
-        score.textContent = 'Score: ' + playerScore + ' - ' + computerScore;
+        score.textContent = `Score: ${playerScore} - ${computerScore}`;
     } else if (playRoundResult === 'tie') {
-        score.textContent = 'Score: ' + playerScore + ' - ' + computerScore;
+        score.textContent = `Score: ${playerScore} - ${computerScore}`;
     } else {}
 }
 
@@ -113,9 +113,9 @@ let endResultDiv = document.querySelector('.end-results');
 let endResult = document.createElement('h1');
 function displayResult() {
     if (playerScore === 5) {
-        endResult.textContent = 'PLAYER WINS WITH A FINAL SCORE OF ' + playerScore + ' - ' + computerScore;
+        endResult.textContent = `PLAYER WINS WITH A FINAL SCORE OF ${playerScore} - ${computerScore}`;
     } else if (computerScore === 5) {
-        endResult.textContent = 'OPPONENT WINS WITH A FINAL SCORE OF ' + playerScore + ' - ' + computerScore;
+        endResult.textContent = `OPPONENT WINS WITH A FINAL SCORE OF ${playerScore} - ${computerScore}`;
     } 
     endResultDiv.appendChild(endResult);
 }
